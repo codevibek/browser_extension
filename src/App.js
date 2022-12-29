@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    // Select all input elements on the page
+    const inputElements = document.querySelectorAll('input');
+
+    // Loop through the text elements and log their content
+    inputElements.forEach((input) => {
+      // Create a new button element
+      const button = document.createElement('button');
+      button.textContent = 'Click me';
+
+      // Add an onclick event listener to the button
+      button.addEventListener('click', () => {
+        console.log(`${input.value}`);
+      });
+
+      // Append the button to the input element
+      input.insertAdjacentElement('afterend', button);
+    });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
